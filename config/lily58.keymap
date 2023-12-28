@@ -21,17 +21,17 @@
 
         default_layer {
 // ------------------------------------------------------------------------------------------------------
-// |  '  |  1  |  2  |  3  |  4   |   5   |                   |   6   |   7   |  8   | 9  |  0  |  -  |
-// | TAB |  Q  |  W  |  F  |  P   |   B   |                   |   J   |   L   |  U   | Y  |  ;  |  =  |
-// | ESC |  A  |  R  |  S  |  T   |   G   |                   |   M   |   N   |  E   | I  |  O  |  '  |
-// | GUI |  Z  |  X  |  C  |  D   |   V   |   [   |   |   ]   |   K   |   H   |  ,   | .  |  /  |  \  |
-//                   | ALT | BSPC | LOWER | SPACE |   | ENTER | RAISE | SHIFT | CTRL |
+// |  '  |  1  |  2  |  3   |  4  |   5   |                   |   6   |   7   |  8   | 9  |  0  |  -  |
+// | TAB |  Q  |  W  |  F   |  P  |   B   |                   |   J   |   L   |  U   | Y  |  ;  |  =  |
+// | ESC |  A  |  R  |  S   |  T  |   G   |                   |   M   |   N   |  E   | I  |  O  |  '  |
+// | GUI |  Z  |  X  |  C   |  D  |   V   |   [   |   |   ]   |   K   |   H   |  ,   | .  |  /  |  \  |
+//                   | CTRL | ALT | LOWER | SPACE |   | ENTER | RAISE | SHIFT | BSPC |
             bindings = <
-&kp GRAVE &kp N1 &kp N2 &kp N3   &kp N4   &kp N5                       &kp N6    &kp N7     &kp N8    &kp N9  &kp N0   &kp MINUS
-&kp TAB   &kp Q  &kp W  &kp F    &kp P    &kp B                        &kp J     &kp L      &kp U     &kp Y   &kp SEMI &kp EQUAL
-&kp ESC   &kp A  &kp R  &kp S    &kp T    &kp G                        &kp M     &kp N      &kp E     &kp I   &kp O    &kp SQT
-&kp LGUI  &kp Z  &kp X  &kp C    &kp D    &kp V     &kp LBKT  &kp RBKT &kp K     &kp H      &kp COMMA &kp DOT &kp FSLH &kp BSLH
-                        &kp LALT &kp BSPC &mo lower &kp SPACE &kp RET  &mo raise &kp RSHIFT &kp RCTRL
+&kp GRAVE &kp N1 &kp N2 &kp N3    &kp N4   &kp N5                       &kp N6    &kp N7     &kp N8    &kp N9  &kp N0   &kp MINUS
+&kp TAB   &kp Q  &kp W  &kp F     &kp P    &kp B                        &kp J     &kp L      &kp U     &kp Y   &kp SEMI &kp EQUAL
+&kp ESC   &kp A  &kp R  &kp S     &kp T    &kp G                        &kp M     &kp N      &kp E     &kp I   &kp O    &kp SQT
+&kp LGUI  &kp Z  &kp X  &kp C     &kp D    &kp V     &kp LBKT  &kp RBKT &kp K     &kp H      &kp COMMA &kp DOT &kp FSLH &kp BSLH
+                        &kp LCTRL &kp LALT &mo lower &kp SPACE &kp RET  &mo raise &kp RSHIFT &kp BSPC
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -57,17 +57,17 @@
 
         raise_layer {
 // ------------------------------------------------------------------------------------------
-// |   |      |     |      |     |       |           |   |      |      |       |        |   |
-// |   |  !   |  @  |  #   |  $  |   %   |           |   | HOME | UP   | PGUP  | PSCRN  |   |
-// |   |  ^   |  &  |  *   |  (  |   )   |           |   | LEFT | DOWN | RIGHT | DEL    |   |
-// |   | UNDO | CUT | COPY | DEL | PASTE |   |   |   |   | END  |      | PGDN  | INSERT |   |
-//                  |      |     | TOG1  |   |   |   |   |      |      |
+// |   |   |   |   |   |      |           |   |      |      |       |        |   |
+// |   | ! | @ | # | $ |  %   |           |   | HOME | UP   | PGUP  | PSCRN  |   |
+// |   | ^ | & | * | ( |  )   |           |   | LEFT | DOWN | RIGHT | DEL    |   |
+// |   |   |   |   |   |      |   |   |   |   | END  |      | PGDN  | INSERT |   |
+//             |   |   | TOG1 |   |   |   |   |      |      |
             bindings = <
-&none  &none     &none     &none     &none    &none                    &none  &none    &none    &none     &none     &none
-&trans &kp EXCL  &kp AT    &kp HASH  &kp DLLR &kp PRCNT                &none  &kp HOME &kp UP   &kp PG_UP &kp PSCRN &none
-&trans &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR                 &none  &kp LEFT &kp DOWN &kp RIGHT &kp DEL   &none
-&trans &kp LC(Z) &kp LC(X) &kp LC(C) &kp DEL  &kp LC(V)  &none  &none  &none  &kp END  &none    &kp PG_DN &kp INS   &none
-                           &trans    &trans   &tog lower &trans &trans &trans &trans   &trans
+&none  &none     &none    &none     &none    &none                    &none  &none    &none    &none     &none     &none
+&trans &kp EXCL  &kp AT   &kp HASH  &kp DLLR &kp PRCNT                &none  &kp HOME &kp UP   &kp PG_UP &kp PSCRN &none
+&trans &kp CARET &kp AMPS &kp ASTRK &kp LPAR &kp RPAR                 &none  &kp LEFT &kp DOWN &kp RIGHT &kp DEL   &none
+&trans &none     &none    &none     &none    &none      &none  &none  &none  &kp END  &none    &kp PG_DN &kp INS   &none
+                          &trans    &trans   &tog lower &trans &trans &trans &trans   &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
