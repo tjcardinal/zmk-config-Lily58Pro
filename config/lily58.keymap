@@ -11,8 +11,7 @@
 
 
 #define default 0
-#define lower 1
-#define raise 2
+#define second 1
 
 
 / {
@@ -20,57 +19,39 @@
         compatible = "zmk,keymap";
 
         default_layer {
-// ------------------------------------------------------------------------------------------------------
-// |  '  |  1  |  2  |  3   |  4  |   5   |                   |   6   |   7   |  8   | 9  |  0  |  =  |
-// | TAB |  Q  |  W  |  E   |  R  |   T   |                   |   Y   |   U   |  I   | O  |  P  |  -  |
-// | ESC |  A  |  S  |  D   |  F  |   G   |                   |   H   |   J   |  K   | L  |  ;  |  '  |
-// | GUI |  Z  |  X  |  C   |  V  |   B   |   [   |   |   ]   |   N   |   M   |  ,   | .  |  /  |  \  |
-//                   | CTRL | ALT | LOWER | SPACE |   | ENTER | RAISE | SHIFT | BSPC |
+// -------------------------------------------------------------------------------------------------------
+// | DEL |  1  |  2  |  3  |   4   |   5   |                     |  6   |  7    |  8   |  9  |  0  | DEL |
+// | TAB |  Q  |  W  |  F  |   P   |   B   |                     |  J   |  L    |  U   |  Y  |  '  | TAB |
+// | ESC |  A  |  R  |  S  |   T   |   G   |                     |  M   |  N    |  E   |  I  |  O  | ESC |
+// | GUI |  Z  |  X  |  C  |   D   |   V   |  ???  |     |  ???  |  K   |  H    |  ,   |  .  |  /  | GUI |
+//                   | ALT | LAYER | SPACE | SHIFT |     | ENTER | BSPC | LAYER | CTRL |
             bindings = <
-&kp GRAVE &kp N1 &kp N2 &kp N3    &kp N4   &kp N5                       &kp N6    &kp N7     &kp N8    &kp N9  &kp N0   &kp EQUAL
-&kp TAB   &kp Q  &kp W  &kp E     &kp R    &kp T                        &kp Y     &kp U      &kp I     &kp O   &kp P    &kp MINUS
-&kp ESC   &kp A  &kp S  &kp D     &kp F    &kp G                        &kp H     &kp J      &kp K     &kp L   &kp SEMI &kp SQT
-&kp LGUI  &kp Z  &kp X  &kp C     &kp V    &kp B     &kp LBKT  &kp RBKT &kp N     &kp M      &kp COMMA &kp DOT &kp FSLH &kp BSLH
-                        &kp LCTRL &kp LALT &mo lower &kp SPACE &kp RET  &mo raise &kp RSHIFT &kp BSPC
+&kp DEL  &kp N1 &kp N2 &kp N3   &kp N4     &kp N5              		         &kp N6   &kp N7     &kp N8    &kp N9  &kp N0   &kp DEL
+&kp TAB  &kp Q  &kp W  &kp F    &kp P      &kp B               		         &kp J    &kp L      &kp U     &kp Y   &kp SQT  &kp TAB
+&kp ESC  &kp A  &kp R  &kp S    &kp T      &kp G               		         &kp M    &kp N      &kp E     &kp I   &kp O    &kp ESC
+&kp LGUI &kp Z  &kp X  &kp C    &kp D      &kp V     &kp LBKT  		&kp RBKT &kp K    &kp H      &kp COMMA &kp DOT &kp FSLH &kp RGUI
+                       &kp LALT &mo second &kp SPACE &kp LSHIFT		&kp RET  &kp BSPC &mo second &kp RCTRL
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
-        lower_layer {
-// --------------------------------------------------------------------------------------
-// |   |        | F10 | F11 | F12 |   |           |      | NLCK |  /  |  *  |   -   |   |
-// |   | BT_NXT | F7  | F8  | F9  |   |           |      |  7   |  8  |  9  |   +   |   |
-// |   | BT_CLR | F4  | F5  | F6  |   |           |      |  4   |  5  |  6  | ENTER |   |
-// |   |        | F1  | F2  | F3  |   |   |   |   |  0   |  1   |  2  |  3  |   .   |   |
-//                    |     |     |   |   |   |   | TOG2 |      |     |
+        second_layer {
+// ----------------------------------------------------------------------------------------
+// | F11 | F1     | F2   | F3   | F4    | F5  |             | F6 | F7 | F8 | F9 | F10 | F12 |
+// |  T  | BT_NXT | HOME | UP   | PGUP  |     |             | [  | 7  | 8  | 9  | ]   |  T  |
+// |  T  | BT_CLR | LEFT | DOWN | RIGHT |     |             | =  | 4  | 5  | 6  | '   |  T  |
+// |  T  |        | END  |      | PGDN  |     |   |     | 0 | \  | 1  | 2  | 3  | `   |  T  |
+//                       |  T   |   T   |  T  | T |     | T |  T |  T |  T |
             bindings = <
-&none  &none      &kp F10 &kp F11 &kp F12 &none                &none      &kp KP_NLCK &kp KP_DIVIDE &kp KP_MULTIPLY &kp KP_MINUS &none
-&trans &bt BT_NXT &kp F7  &kp F8  &kp F9  &none                &none      &kp KP_N7   &kp KP_N8     &kp KP_N9       &kp KP_PLUS  &none 
-&trans &bt BT_CLR &kp F4  &kp F5  &kp F6  &none                &none      &kp KP_N4   &kp KP_N5     &kp KP_N6       &kp KP_ENTER &none
-&trans &none      &kp F1  &kp F2  &kp F3  &none  &none  &none  &kp KP_N0  &kp KP_N1   &kp KP_N2     &kp KP_N3       &kp KP_DOT   &none
-                          &trans  &trans  &trans &trans &trans &tog raise &trans      &trans
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
-        };
-
-        raise_layer {
-// ------------------------------------------------------------------------------------------
-// |   |   |   |   |   |      |           |   |      |      |       |        |   |
-// |   | ! | @ | # | $ |  %   |           |   | HOME | UP   | PGUP  | PSCRN  |   |
-// |   | ^ | & | * | ( |  )   |           |   | LEFT | DOWN | RIGHT | DEL    |   |
-// |   |   |   |   |   |      |   |   |   |   | END  |      | PGDN  | INSERT |   |
-//             |   |   | TOG1 |   |   |   |   |      |      |
-            bindings = <
-&none  &none     &none    &none     &none    &none                    &none  &none    &none    &none     &none     &none
-&trans &kp EXCL  &kp AT   &kp HASH  &kp DLLR &kp PRCNT                &none  &kp HOME &kp UP   &kp PG_UP &kp PSCRN &none
-&trans &kp CARET &kp AMPS &kp ASTRK &kp LPAR &kp RPAR                 &none  &kp LEFT &kp DOWN &kp RIGHT &kp DEL   &none
-&trans &none     &none    &none     &none    &none      &none  &none  &none  &kp END  &none    &kp PG_DN &kp INS   &none
-                          &trans    &trans   &tog lower &trans &trans &trans &trans   &trans
+&kp F11 &kp F1     &kp F2   &kp F3   &kp F4    &kp F5        		           &kp F6    &kp F7    &kp F8    &kp F9    &kp F11      &F 12
+&trans  &bt BT_NXT &kp HOME &kp UP   &kp PGUP  &none        		           &kp LBKT  &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp RBKT     &trans 
+&trans  &bt BT_CLR &kp LEFT &kp DOWN &kp RIGHT &none        		           &kp EQUAL &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_ENTER &trans
+&trans  &none      &kp END  &none    &kp PGDN  &none  &none 		&kp KP_N0  &kp BSLH  &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_DOT   &trans
+                            &trans   &trans    &trans &trans		&trans     &trans &trans      &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
     };
-};
+} ;
