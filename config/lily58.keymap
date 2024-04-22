@@ -16,6 +16,9 @@
 #define num 3
 #define fun 4
 
+&sk {
+
+}
 
 / {
     keymap {
