@@ -11,7 +11,10 @@
 
 
 #define default 0
-#define second 1
+#define ext 1
+#define sym 2
+#define num 3
+#define fun 4
 
 
 / {
@@ -19,39 +22,83 @@
         compatible = "zmk,keymap";
 
         default_layer {
-// -------------------------------------------------------------------------------------------------------
-// | DEL |  1  |  2  |  3  |   4   |   5   |                     |  6   |  7    |  8   |  9  |  0  | DEL |
-// | TAB |  Q  |  W  |  F  |   P   |   B   |                     |  J   |  L    |  U   |  Y  |  '  | TAB |
-// | ESC |  A  |  R  |  S  |   T   |   G   |                     |  M   |  N    |  E   |  I  |  O  | ESC |
-// | GUI |  Z  |  X  |  C  |   D   |   V   |  ???  |     |  ???  |  K   |  H    |  ,   |  .  |  /  | GUI |
-//                   | ALT | LAYER | SPACE | SHIFT |     | ENTER | BSPC | LAYER | CTRL |
+// -------------------------------------------------------------------------------
+// | ? | 1 | 2 | 3 |  4  |  5  |                     |  6  |  7  | 8 | 9 | 0 | ? |
+// | ? | Q | W | F |  P  |  B  |                     |  J  |  L  | U | Y | ' | ? |
+// | ? | A | R | S |  T  |  G  |                     |  M  |  N  | E | I | O | ? |
+// | ? | Z | X | C |  D  |  V  |   ?   |     |   ?   |  K  |  H  | , | . | / | ? |
+//             | ? | NUM | EXT | SHIFT |     | SPACE | SYM | FUN | ? |
             bindings = <
-&kp DEL  &kp N1 &kp N2 &kp N3   &kp N4     &kp N5              		         &kp N6   &kp N7     &kp N8    &kp N9  &kp N0   &kp DEL
-&kp TAB  &kp Q  &kp W  &kp F    &kp P      &kp B               		         &kp J    &kp L      &kp U     &kp Y   &kp SQT  &kp TAB
-&kp ESC  &kp A  &kp R  &kp S    &kp T      &kp G               		         &kp M    &kp N      &kp E     &kp I   &kp O    &kp ESC
-&kp LGUI &kp Z  &kp X  &kp C    &kp D      &kp V     &kp LBKT  		&kp RBKT &kp K    &kp H      &kp COMMA &kp DOT &kp FSLH &kp RGUI
-                       &kp LALT &mo second &kp SPACE &kp LSHIFT		&kp RET  &kp BSPC &mo second &kp RCTRL
+&none &kp N1 &kp N2 &kp N3 &kp N4  &kp N5				  &kp N6  &kp N7  &kp N8    &kp N9  &kp N0   &none
+&none &kp Q  &kp W  &kp F  &kp P   &kp B				  &kp J   &kp L   &kp U     &kp Y   &kp SQT  &none
+&none &kp A  &kp R  &kp S  &kp T   &kp G				  &kp M   &kp N   &kp E     &kp I   &kp O    &none
+&none &kp Z  &kp X  &kp C  &kp D   &kp V   &none		&none     &kp K   &kp H   &kp COMMA &kp DOT &kp FSLH &none
+                    &none  &mo num &mo ext &kp LSHIFT		&kp SPACE &mo sym &mv fun &none
             >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
-        second_layer {
-// ----------------------------------------------------------------------------------------
-// | F11 | F1     | F2   | F3   | F4    | F5  |             | F6 | F7 | F8 | F9 | F10 | F12 |
-// |  T  | BT_NXT | HOME | UP   | PGUP  |     |             | [  | 7  | 8  | 9  | ]   |  T  |
-// |  T  | BT_CLR | LEFT | DOWN | RIGHT |     |             | =  | 4  | 5  | 6  | '   |  T  |
-// |  T  |        | END  |      | PGDN  |     |   |     | 0 | \  | 1  | 2  | 3  | `   |  T  |
-//                       |  T   |   T   |  T  | T |     | T |  T |  T |  T |
+        ext_layer {
+// ----------------------------------------------------------------------------------------------------
+// | ? |  ?   |  ?   |   ?   |  ?   |   ?   |               |  ?   |  ?   |  ?   |   ?   |   ?    | ? |
+// | ? | ESC  | BACK | FIND  | FWD  |  INS  |               | PGUP | HOME |  UP  |  END  |  CAPS  | ? |
+// | ? | ALT  | GUI  | SHIFT | CTRL |   ?   |               | PGDN | LEFT | DOWN | RIGHT |  DEL   | ? |
+// | ? | UNDO | CUT  | COPY  | GUI  | PASTE | ? |     |  ?  | RET  | BSPC | TAB  |  APP  | PRSCRN | ? |
+//                   |   ?   |  ?   |   ?   | ? |     | RET |  ?   |  ?   |  ?   |
             bindings = <
-&kp F11 &kp F1     &kp F2   &kp F3   &kp F4    &kp F5        		           &kp F6    &kp F7    &kp F8    &kp F9    &kp F11      &F 12
-&trans  &bt BT_NXT &kp HOME &kp UP   &kp PGUP  &none        		           &kp LBKT  &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp RBKT     &trans 
-&trans  &bt BT_CLR &kp LEFT &kp DOWN &kp RIGHT &none        		           &kp EQUAL &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_ENTER &trans
-&trans  &none      &kp END  &none    &kp PGDN  &none  &none 		&kp KP_N0  &kp BSLH  &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_DOT   &trans
-                            &trans   &trans    &trans &trans		&trans     &trans &trans      &trans
+&none &none      &none      &none      &none         &none				  &none    &none    &none    &none     &none      &none
+&none &kp ESC    &kp K_BACK &kp K_FIND &kp K_FORWARD &kp INS				  &kp PGUP &kp HOME &kp UP   &kp END   &kp CAPS   &none
+&none &sk LALT   &sk LGUI   &sk LSHIFT &sk LCTRL     &none				  &kp PGDN &kp LEFT &kp DOWN &kp RIGHT &kp DEL    &none
+&none &kp K_UNDO &kp K_CUT  &kp K_COPY &kp LGUI      &kp K_PASTE &none		&none     &kp RET  &kp BSPC &kp TAB  &kp K_APP &kp PRSCRN &none
+                            &none      &none         &none       &none		&kp RET   &none    &none    &none
             >;
+        };
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        sym_layer {
+// --------------------------------------------------------------------------
+// | ? |  ?  |  ?  |   ?   |  ?   | ? |             | ? | ? | ? | ? | ? | ? |
+// | ? |  !  |  @  |   #   |  $   | % |             | = | ` | : | ; | + | ? |
+// | ? | ALT | GUI | SHIFT | CTRL | ^ |             | * | ( | { | [ | - | ? |
+// | ? |  ?  |  ?  |   \   | "|"  | & | ? |     | ? | ~ | ) | } | ] | _ | ? |
+//                 |   ?   |  ?   | ? | ? |     | ? | ? | ? | ? |
+            bindings = <
+&none &none    &none    &none      &none     &none			      &none     &none     &none     &none    &none     &none
+&none &kp EXCL &kp AT   &kp HASH   &kp DLLR  &kp PRCNT			      &kp EQUAL &kp GRAVE &kp COLON &kp SEMI &kp PLUS  &none
+&none &sk LALT &sk LGUI &sk LSHIFT &sk LCTRL &kp CARET			      &kp STAR  &kp LPAR  &kp LBRC  &kp LBKT &kp MINUS &none
+&none &none    &none    &kp BSLH   &kp PIPE  &kp AMPS  &none		&none &kp TILDE &kp RPAR  &kp RBRC  &kp RBKT &kp UNDER &none
+                        &none      &none     &none     &none		&none &none     &none     &none
+            >;
+        };
+
+        num_layer {
+// -----------------------------------------------------------------------------
+// | ? |  ?  |  ?  |   ?   |  ?   |  ?   |             | ? | ? | ? | ? | ? | ? |
+// | ? |  ?  |  ?  |   ?   |  ?   | NLCK |             | = | 7 | 8 | 9 | + | ? |
+// | ? | ALT | GUI | SHIFT | CTRL |  ?   |             | * | 4 | 5 | 6 | - | ? |
+// | ? |  ?  | APP |  TAB  | BSPC | RET  | ? |     | ? | 0 | 1 | 2 | 3 | / | ? |
+//                 | ?     | ?    |  ?   | ? |     | ? | ? | ? | ? |
+            bindings = <
+&none &none    &none     &none      &none     &none			      &none           &none     &none     &none     &none         &none
+&none &none    &none     &none      &none     &kp KP_NLCK		      &kp KP_EQUAL    &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_PLUS   &none
+&none &sk LALT &sk LGUI  &sk LSHIFT &sk LCTRL &none			      &kp KP_MULTIPLY &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_MINUS  &none
+&none &none    &kp K_APP &kp TAB    &kp BSPC  &kp RET     &none		&none &kp KP_N0       &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_DIVIDE &none
+                         &none      &none     &none       &none		&none &none           &none     &none
+            >;
+        };
+
+        fun_layer {
+// -----------------------------------------------------------------------------------------------
+// | ? |  ?   |   ?    |   ?   |   ?    |   ?    |               |  ?  | ?  | ?  | ?  |  ?   | ? |
+// | ? | STOP |  PREV  | PLAY  |  NEXT  | BRI_UP |               | F12 | F7 | F8 | F9 | SLCK | ? |
+// | ? | ALT  |  GUI   | SHIFT |  CTRL  | BRI_DN |               | F11 | F4 | F5 | F6 |  ?   | ? |
+// | ? | MUTE | VOL_DN | COPY  | VOL_UP | PASTE  | ? |     |  ?  | F10 | F1 | F2 | F3 |  ?   | ? |
+//                     |   ?   |   ?    |   ?    | ? |     | RET |  ?  | ?  | ?  |
+            bindings = <
+&none &none      &none        &none      &none        &none			              &none   &none  &none  &none  &none    &none
+&none &kp K_STOP &kp K_PREV   &kp K_PP   &kp K_NEXT   &kp C_BRI_UP			      &kp F12 &kp F7 &kp F8 &kp F9 &kp SLCK &none
+&none &sk LALT   &sk LGUI     &sk LSHIFT &sk LCTRL    &kp C_BRI_DN	      		      &kp F11 &kp F4 &kp F5 &kp F6 &none    &none
+&none &kp K_MUTE &kp K_VOL_DN &kp K_COPY &kp K_VOL_UP &kp K_PASTE  &none		&none &kp F10 &kp F1 &kp F2 &kp F3 &none    &none
+                              &none      &none        &none        &none		&none &none   &none  &none
+            >;
         };
     };
 } ;
