@@ -51,8 +51,8 @@
 &none &none      &none      &none      &none         &none				  &none    &none    &none    &none     &none      &none
 &none &kp ESC    &kp K_BACK &kp K_FIND &kp K_FORWARD &kp INS				  &kp PGUP &kp HOME &kp UP   &kp END   &kp CAPS   &none
 &none &sk LALT   &sk LGUI   &sk LSHIFT &sk LCTRL     &none				  &kp PGDN &kp LEFT &kp DOWN &kp RIGHT &kp DEL    &none
-&none &kp K_UNDO &kp K_CUT  &kp K_COPY &kp LGUI      &kp K_PASTE &none		&none     &kp RET  &kp BSPC &kp TAB  &kp K_APP &kp PRSCRN &none
-                            &none      &none         &none       &none		&kp RET   &none    &none    &none
+&none &kp LC(z)  &kp LC(x)  &kp LC(c)  &kp LGUI      &kp LC(v) &none		&none     &kp RET  &kp BSPC &kp TAB  &kp K_APP &kp PRSCRN &none
+                            &none      &none         &none     &none		&kp RET   &none    &none    &none
             >;
         };
 
@@ -99,7 +99,7 @@
 &none &none      &none        &none      &none        &none			              &none   &none  &none  &none  &none    &none
 &none &kp K_STOP &kp K_PREV   &kp K_PP   &kp K_NEXT   &kp C_BRI_UP			      &kp F12 &kp F7 &kp F8 &kp F9 &kp SLCK &none
 &none &sk LALT   &sk LGUI     &sk LSHIFT &sk LCTRL    &kp C_BRI_DN	      		      &kp F11 &kp F4 &kp F5 &kp F6 &none    &none
-&none &kp K_MUTE &kp K_VOL_DN &kp K_COPY &kp K_VOL_UP &kp K_PASTE  &none		&none &kp F10 &kp F1 &kp F2 &kp F3 &none    &none
+&none &kp K_MUTE &kp K_VOL_DN &kp LC(c)  &kp K_VOL_UP &kp LC(v)    &none		&none &kp F10 &kp F1 &kp F2 &kp F3 &none    &none
                               &none      &none        &none        &none		&none &none   &none  &none
             >;
         };
