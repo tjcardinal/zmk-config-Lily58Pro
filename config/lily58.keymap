@@ -51,7 +51,10 @@
 &none &none      &none      &none      &none         &none				  &none     &none    &none    &none     &none      &none
 &none &kp ESC    &kp K_BACK &kp K_FIND &kp K_FORWARD &kp INS				  &kp PG_UP &kp HOME &kp UP   &kp END   &kp CAPS   &none
 &none &kp LALT   &kp LGUI   &kp LSHIFT &kp LCTRL     &none				  &kp PG_DN &kp LEFT &kp DOWN &kp RIGHT &kp DEL    &none
-&none &kp LC(z)  &kp LC(x)  &kp LC(c)  &kp LGUI      &kp LC(v) &none		&none     &kp RET   &kp BSPC &kp TAB  &kp K_APP &kp PSCRN &none
+
+//&none &kp LC(z)  &kp LC(x)  &kp LC(c)  &kp LGUI      &kp LC(v) &none		&none     &kp RET   &kp BSPC &kp TAB  &kp K_APP &kp PSCRN &none
+&none &kp LC(z)  &kp LC(x)  &kp LC(c)  &kp LGUI      &kp LC(v) &none		&none     &kp RET   &none &kp TAB  &none &kp PSCRN &none
+
                             &none      &none         &none     &none	 	&none     &none    &none    &none
             >;
         };
